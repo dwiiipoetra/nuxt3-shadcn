@@ -75,7 +75,7 @@ onMounted(() => {
     <header class="flex items-start justify-between">
         <div class="grow">
             <p>Hi, welcome Dwi Putra</p>
-            <h1>Dashboard</h1>
+            <h1>Overview</h1>
         </div>
 
         <ProductNew/>
