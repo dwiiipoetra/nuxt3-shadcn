@@ -11,9 +11,9 @@ const items = ref([
         icon: "grommet-icons:transaction"
     },
     {
-        title: "Contacts",
-        path: "",
-        icon: "bxs:contact"
+        title: "Account",
+        path: "/account",
+        icon: "mdi:account"
     },
     {
         title: "Settings",

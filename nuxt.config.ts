@@ -5,6 +5,10 @@
 // })
 
 export default defineNuxtConfig({
+  devtools: { enabled: true },
+  alias: {
+    assets: "/<rootDir>/assets"
+  },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', 'nuxt-icon','nuxt-highcharts'],
   shadcn: {
     /**
@@ -16,10 +20,5 @@ export default defineNuxtConfig({
      * @default "./components/ui"
      */
     componentDir: './components/ui'
-  },
-  // vue: {  
-  //   compilerOptions: {
-  //     isCustomElement: (tag) => ['button'].includes(tag),
-  //   },
-  // }
+  }
 })

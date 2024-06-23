@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 
-export default function useHelpers() {
+export default function useHelpers () {
     let loading = ref(false)
     let open = ref(false)
 

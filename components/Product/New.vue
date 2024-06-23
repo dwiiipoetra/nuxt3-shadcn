@@ -1,4 +1,16 @@
 <script setup>
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
+import { Button } from '@/components/ui/button'
 import useHelpers from '@/composables/useHelpers'
 const { loading, open } = useHelpers()
 
@@ -19,7 +31,7 @@ const createNewProduct = () => {
 <template>
   <AlertDialog :open="open">
     <AlertDialogTrigger>
-        <Button @click="open = true">Add a new product</Button>
+        <Button variant="outline" @click="open = true">Add a new product</Button>
     </AlertDialogTrigger>
     <AlertDialogContent>
       <AlertDialogHeader>

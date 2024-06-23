@@ -74,6 +74,7 @@ onMounted(() => {
 <div class="grid w-full gap-4">
     <header class="flex items-start justify-between">
         <div class="grow">
+            <!-- <img src="/54_lete_a.jpg" alt=""> -->
             <p>Hi, welcome Dwi Putra</p>
             <h1>Dashboard</h1>
         </div>
