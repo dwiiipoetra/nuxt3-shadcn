@@ -76,7 +76,7 @@ onMounted(() => {
         <div class="grow">
             <!-- <img src="/54_lete_a.jpg" alt=""> -->
             <p>Hi, welcome Dwi Putra</p>
-            <h1>Dashboard</h1>
+            <h1>Overview</h1>
         </div>
 
         <ProductNew/>
