@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/types": "^2.17.4",
     "@tanstack/vue-table": "^8.17.3",
     "@vee-validate/zod": "^4.13.1",
     "@vueuse/core": "^10.11.0",

@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     assets: "/<rootDir>/assets"
   },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', 'nuxt-icon','nuxt-highcharts'],
+  plugins: ['~/plugins/axios.ts'],
   shadcn: {
     /**
      * Prefix for all the imported component

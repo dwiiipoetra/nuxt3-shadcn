@@ -1,4 +1,16 @@
 <script setup>
+import { useRouter } from 'vue-router'
+const axios = useNuxtApp().$axios
+
+const router = useRouter()
+
+// user login data
+if(process.client) {
+    var storedUserString = localStorage.getItem('user')
+    var storedUser = JSON.parse(storedUserString)
+    var { loggedIn, token } = storedUser
+}
+
 const data = ref([])
 
 const list = [
@@ -66,6 +78,12 @@ const cards = [
 ]
 
 onMounted(() => {
+    axios.get('/api/user', { headers: { 'Authorization': 'Bearer ' + token }})
+    .then(res => console.log('response created: ', res))
+    .catch(err => console.log(err))
+
+    if(!loggedIn) return router.push('/login')
+
     generateRandomNumber(24)
 })
 </script>
