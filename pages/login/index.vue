@@ -1,6 +1,7 @@
 <script setup>
 definePageMeta({
-  layout: "fullwidth"
+  layout: "fullwidth",
+  middleware: ['already-auth']
 })
 </script>
 
@@ -52,10 +53,10 @@ definePageMeta({
     <div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
       <div class="flex flex-col space-y-2 text-center">
         <h1 class="text-2xl font-semibold tracking-tight">
-          Create an account
+          Sign In to your account
         </h1>
         <p class="text-sm text-muted-foreground">
-          Enter your email below to create your account
+          Enter your email below here
         </p>
       </div>
       <UserAuthForm />

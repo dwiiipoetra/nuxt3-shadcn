@@ -1,10 +1,14 @@
 <script setup>
+definePageMeta({
+  middleware: ['auth']
+})
+
 import { h } from 'vue'
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import * as z from 'zod'
 
-import { useToast } from '@/components/ui/toast/use-toast'
+import { useToast } from '@/components/ui/toast'
 const { toast } = useToast()
 
 const formSchema = toTypedSchema(z.object({
@@ -27,7 +31,13 @@ const onSubmit = handleSubmit((values) => {
 </script>
 
 <template>
-  <div class="grid w-full gap-2">
+  <div class="grid w-full gap-4">
+    <header class="flex items-start justify-between">
+        <div class="grow">
+            <p>Fill and complete your profile</p>
+            <h1>Account</h1>
+        </div>
+    </header>
     <form class="w-2/3 space-y-6" @submit="onSubmit">
       <FormField v-slot="{ componentField }" name="username">
         <FormItem>

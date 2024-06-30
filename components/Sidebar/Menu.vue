@@ -1,4 +1,11 @@
 <script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const userStore = useUserStore()
+
+const axios = useNuxtApp().$axios
+
 const items = ref([
     {
         title: "Overview",
@@ -21,6 +28,14 @@ const items = ref([
         icon: "ep:setting"
     }
 ])
+
+const logout = () => {
+    axios.post('/api/logout')
+    .then(() => {
+        userStore.logout()
+        return router.push('/login')
+    })
+}
 </script>
 <template>
     <div>
@@ -33,6 +48,14 @@ const items = ref([
                 <NuxtLink :href="item.path" v-for="(item, index) in items" :key="index" class="flex items-center gap-2 px-2 py-1 transition rounded cursor-pointer hover:bg-neutral-100">
                     <Icon size="20" color="black" :name="item.icon"/>
                     <span>{{ item.title }}</span>
+                </NuxtLink>
+                <NuxtLink v-if="!userStore.user" href="login" class="flex items-center gap-2 px-2 py-1 transition rounded cursor-pointer hover:bg-neutral-100">
+                    <Icon size="20" color="black" name="ic:outline-login"/>
+                    <span>Login</span>
+                </NuxtLink>
+                <NuxtLink v-if="userStore.user" @click="logout" class="flex items-center gap-2 px-2 py-1 transition rounded cursor-pointer hover:bg-neutral-100">
+                    <Icon size="20" color="black" name="ic:outline-logout"/>
+                    <span>Logout</span>
                 </NuxtLink>
             </div>
         </div>

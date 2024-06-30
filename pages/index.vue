@@ -1,15 +1,13 @@
 <script setup>
-import { useRouter } from 'vue-router'
-const axios = useNuxtApp().$axios
+definePageMeta({
+  middleware: ['auth']
+})
 
+import { useRouter } from 'vue-router'
 const router = useRouter()
 
-// user login data
-if(process.client) {
-    var storedUserString = localStorage.getItem('user')
-    var storedUser = JSON.parse(storedUserString)
-    var { loggedIn, token } = storedUser
-}
+const axios = useNuxtApp().$axios
+const userStore = useUserStore()
 
 const data = ref([])
 
@@ -78,13 +76,7 @@ const cards = [
 ]
 
 onMounted(() => {
-    axios.get('/api/user', { headers: { 'Authorization': 'Bearer ' + token }})
-    .then(res => console.log('response created: ', res))
-    .catch(err => console.log(err))
-
-    if(!loggedIn) return router.push('/login')
-
-    generateRandomNumber(24)
+        generateRandomNumber(24)
 })
 </script>
 
@@ -93,8 +85,9 @@ onMounted(() => {
     <header class="flex items-start justify-between">
         <div class="grow">
             <!-- <img src="/54_lete_a.jpg" alt=""> -->
-            <p>Hi, welcome Dwi Putra</p>
+            <p>Hi, Welcome {{ userStore.user.user.name }}</p>
             <h1>Overview</h1>
+            <h1>{{userStore.user}}</h1>
         </div>
 
         <ProductNew/>

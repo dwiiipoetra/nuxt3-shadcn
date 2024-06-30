@@ -9,7 +9,10 @@ export default defineNuxtConfig({
   alias: {
     assets: "/<rootDir>/assets"
   },
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', 'nuxt-icon','nuxt-highcharts'],
+  modules: ['@pinia/nuxt','@nuxtjs/tailwindcss', 'shadcn-nuxt', 'nuxt-icon','nuxt-highcharts'],
+  pinia: {
+    storesDirs: ['./stores/**'],
+  },
   plugins: ['~/plugins/axios.ts'],
   shadcn: {
     /**

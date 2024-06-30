@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  middleware: ['auth']
+})
+
 import { h, ref, onMounted } from 'vue'
 import { columns } from './columns'
 
