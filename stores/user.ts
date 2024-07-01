@@ -1,7 +1,5 @@
 import axios from "axios"
 import type { Login } from './../types'
-// import { useRouter } from 'vue-router'
-// const router = useRouter()
 import { useToast } from '@/components/ui/toast'
 const { toast } = useToast()
 
@@ -26,7 +24,8 @@ export const useUserStore = defineStore('user', () => {
                             title: 'Information',
                             description: 'You have successfully logged in'
                         })
-                        // router.push('/')
+                        
+                        setTimeout(async () => { return await navigateTo("/") }, 1000)
                     }
                 }).catch(error => {
                     setUser()

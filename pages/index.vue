@@ -85,7 +85,7 @@ onMounted(() => {
     <header class="flex items-start justify-between">
         <div class="grow">
             <!-- <img src="/54_lete_a.jpg" alt=""> -->
-            <p>Hi, Welcome {{ userStore.user.user.name }}</p>
+            <!-- <p>Hi, Welcome {{ userStore.user?.user.name }}</p> -->
             <h1>Overview</h1>
             <h1>{{userStore.user}}</h1>
         </div>
