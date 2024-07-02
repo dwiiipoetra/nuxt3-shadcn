@@ -1,11 +1,21 @@
-import { ref } from 'vue'
-
 export default function useHelpers () {
-    let loading = ref(false)
-    let open = ref(false)
+    function excerptWord (str:string) {
+        let strArray = str.split(' ')
+        let joinedWord = strArray.slice(0, 15).join(' ')
+
+        return joinedWord
+    }
+
+    function currencyFormat(numb:number) {
+        const formatted = new Intl.NumberFormat('id-ID', {
+          style: 'currency',
+          currency: 'IDR'
+        }).format(numb)
+        
+        return formatted
+    }
 
     return {
-        loading,
-        open
+        excerptWord, currencyFormat
     }
 }

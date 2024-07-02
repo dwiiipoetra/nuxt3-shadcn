@@ -1,8 +1,5 @@
 <script setup>
 import { cn } from '@/lib/utils'
-import { useRouter } from 'vue-router'
-const router = useRouter()
-const axios = useNuxtApp().$axios
 const userStore = useUserStore()
 const { user } = storeToRefs(userStore)
 
@@ -19,7 +16,6 @@ const login = async () => {
     setTimeout(()=> isLoading.value = false, 3000)
   }
 }
-
 
 onMounted(() => {
   // axios.get('api/hello').then(res=>console.log(res))

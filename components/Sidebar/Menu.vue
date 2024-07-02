@@ -23,6 +23,11 @@ const items = ref([
         icon: "mdi:account"
     },
     {
+        title: "Products",
+        path: "/products",
+        icon: "fluent-mdl2:product-list"
+    },
+    {
         title: "Settings",
         path: "",
         icon: "ep:setting"
