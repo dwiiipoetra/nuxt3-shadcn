@@ -1,3 +1,8 @@
+<style scoped>
+.text-destructive {
+  color: red
+}
+</style>
 <script setup>
 definePageMeta({
   middleware: ['auth']
