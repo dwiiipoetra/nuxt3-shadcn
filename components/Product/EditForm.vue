@@ -38,7 +38,6 @@ const editedProduct = computed(() => productStore.product)
 // call getProduct API
 const getDataForm = (productID) => {
     productStore.getProduct(productID)
-    // console.log('store:', productStore.product);
 }
 
 // validate form before submit
@@ -48,7 +47,8 @@ const { handleSubmit } = useForm({
 
 // if form validated then submit form and call updateProduct API
 const onSubmit = handleSubmit(() => {
-    productStore.updateProduct(props.id, editedProduct.value)
+    // console.log(editedProduct.value);
+    productStore.updateProduct(editedProduct.value)
 })
 </script>
 <template>
@@ -69,7 +69,7 @@ const onSubmit = handleSubmit(() => {
                     <FormItem>
                     <FormLabel>Product Name</FormLabel>
                     <FormControl>
-                        <Input :value="editedProduct.name" v-model="editedProduct.name" type="text" placeholder="Type product name here..." v-bind="componentField" />
+                        <Input :defaultValue="editedProduct.name" v-model="editedProduct.name" type="text" placeholder="Type product name here..." v-bind="componentField" />
                     </FormControl>
                     <FormMessage />
                     </FormItem>
@@ -79,7 +79,7 @@ const onSubmit = handleSubmit(() => {
                     <FormItem>
                     <FormLabel>Description</FormLabel>
                     <FormControl>
-                        <Textarea :value="editedProduct.description" v-model="editedProduct.description" placeholder="Type your description here..." v-bind="componentField" />
+                        <Textarea :defaultValue="editedProduct.description" v-model="editedProduct.description" placeholder="Type your description here..." v-bind="componentField" />
                     </FormControl>
                     <FormMessage />
                     </FormItem>
@@ -89,7 +89,7 @@ const onSubmit = handleSubmit(() => {
                     <FormItem>
                     <FormLabel>Price (IDR)</FormLabel>
                     <FormControl>
-                        <Input :value="editedProduct.price" v-model="editedProduct.price" type="number" placeholder="IDR 250.000,00" v-bind="componentField" />
+                        <Input :defaultValue="editedProduct.price" v-model="editedProduct.price" type="number" placeholder="IDR 250.000,00" v-bind="componentField" />
                     </FormControl>
                     <FormMessage />
                     </FormItem>
@@ -99,7 +99,7 @@ const onSubmit = handleSubmit(() => {
                     <FormItem>
                     <FormLabel>Stock</FormLabel>
                     <FormControl>
-                        <Input :value="editedProduct.stock" v-model="editedProduct.stock" type="number" placeholder="0" v-bind="componentField" />
+                        <Input :defaultValue="editedProduct.stock" v-model="editedProduct.stock" type="number" placeholder="0" v-bind="componentField" />
                     </FormControl>
                     <FormMessage />
                     </FormItem>

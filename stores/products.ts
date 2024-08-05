@@ -11,11 +11,11 @@ export const useProductsStore = defineStore('products', () => {
   
   // define reactive for edit form
   let product = reactive({
-    id: "",
+    id: 0,
     name: "",
     description: "",
-    price: "",
-    stock: ""
+    price: 0,
+    stock: 0
   })
 
   const getAllProducts = async () => {
@@ -52,31 +52,27 @@ export const useProductsStore = defineStore('products', () => {
   }
 
   const getProduct = async (id:number) => {
-    try {
-      await axios.get('http://localhost:8000/api/products/' + id)
-      .then(res => {
-        if(res.data.data) {
-          // if success, set response as reactive product state 
-          let { id, name, description, price, stock } = res.data.data
-          product.id = id
-          product.name = name
-          product.description = description
-          product.price = price
-          product.stock = stock
-        }
-      })
-    } catch(error) {
-      console.log(error);
+    let findProduct:Products | undefined = products.value.find((data:Products) => data.id === id)
+    
+    if(findProduct){
+      product.id = findProduct.id
+      product.name = findProduct.name
+      product.description = findProduct.description
+      product.price = findProduct.price
+      product.stock = findProduct.stock
     }
   }
 
-  const updateProduct = async (id:number, form:Products) => {
+  const updateProduct = async (editedProduct:Products) => {
     try {
-      await axios.put('http://localhost:8000/api/products/' + id, form)
+      await axios.put('http://localhost:8000/api/products/' + editedProduct.id, editedProduct)
       .then(res => {
-        if(res.data.data) {
+        if(res.data.data.id) {
+          // getAllProducts()
+          // console.log(res.data,"data nih");
+          // product = res.data.data
           // if success find product by id
-          let getProductByID:Products | undefined = products.value.find((data:Products) => data.id === id)
+          let getProductByID:Products | undefined = products.value.find((data:Products) => data.id === editedProduct.id)
           
           // if product found
           if(getProductByID) {
@@ -98,7 +94,7 @@ export const useProductsStore = defineStore('products', () => {
               description: 'Your data has been updated'
             })
           } else {
-            console.log(`Product with ${id} is not found`);
+            console.log(`Product ${editedProduct.name} is not found`);
           }
           // close dialog
         }
@@ -130,7 +126,7 @@ export const useProductsStore = defineStore('products', () => {
     }
   }
 
-  return { getAllProducts, products, addProduct, getProduct, product, updateProduct, deleteProduct }
+  return { getAllProducts, products, addProduct, product, getProduct, updateProduct, deleteProduct }
 })
 
 if (import.meta.hot) {

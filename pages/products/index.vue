@@ -51,9 +51,9 @@ onMounted(() => {
                   </DialogTrigger>
                   <DialogContent class="bg-rose-200 sm:max-w-[425px]">
                       <DialogHeader>
-                          <DialogTitle>Delete Product {{product.id}}</DialogTitle>
+                          <DialogTitle>Delete Product</DialogTitle>
                           <DialogDescription>
-                            <p class="text-base font-medium">Are you sure want to delete?</p>
+                            <p class="text-base font-medium">Are you sure want to delete {{product.name}}?</p>
                           </DialogDescription>
                       </DialogHeader>
                       <DialogFooter>
